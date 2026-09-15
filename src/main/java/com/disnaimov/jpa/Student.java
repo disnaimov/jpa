@@ -1,15 +1,15 @@
 package com.disnaimov.jpa;
 
-public class Employee {
+public class Student {
     private Long id;
     private String name;
     private String secondName;
     private Double avgGrade;
 
-    public Employee() {
+    public Student() {
     }
 
-    public Employee(String name, String secondName, Double avgGrade) {
+    public Student(String name, String secondName, Double avgGrade) {
         this.name = name;
         this.secondName = secondName;
         this.avgGrade = avgGrade;
