@@ -17,7 +17,7 @@ public class JDBCInsert2 {
             connection = DriverManager.getConnection(DB_URL, USER, PWD);
             Statement statement = connection.createStatement();
             String sqlQuery = "insert into students(name, surname, avg_grade) values" + "('"
-                    + student.getName() + "', '" + student.getSecondName() + "', " + student.getAvgGrade() + ")" ;
+                    + student.getName() + "', '" + student.getSurname() + "', " + student.getAvgGrade() + ")" ;
 
             statement.executeUpdate(sqlQuery);
 

@@ -26,7 +26,7 @@ public class JDBCInsert3 {
             , Statement.RETURN_GENERATED_KEYS);
 
             statement.setString(1, student.getName());
-            statement.setString(2, student.getSecondName());
+            statement.setString(2, student.getSurname());
             statement.setDouble(3, student.getAvgGrade());
 
             int affectedRows = statement.executeUpdate();

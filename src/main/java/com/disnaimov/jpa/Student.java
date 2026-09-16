@@ -1,17 +1,32 @@
 package com.disnaimov.jpa;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "students")
 public class Student {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String name;
-    private String secondName;
+    @Column(name = "surname")
+    private String surname;
+    @Column(name = "avg_grade")
     private Double avgGrade;
 
     public Student() {
     }
 
-    public Student(String name, String secondName, Double avgGrade) {
+    public Student(String name, String surname, Double avgGrade) {
         this.name = name;
-        this.secondName = secondName;
+        this.surname = surname;
         this.avgGrade = avgGrade;
     }
 
@@ -31,12 +46,12 @@ public class Student {
         this.name = name;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public Double getAvgGrade() {
@@ -52,7 +67,7 @@ public class Student {
         return "Employee{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", secondName='" + secondName + '\'' +
+                ", secondName='" + surname + '\'' +
                 ", avgGrade=" + avgGrade +
                 '}';
     }

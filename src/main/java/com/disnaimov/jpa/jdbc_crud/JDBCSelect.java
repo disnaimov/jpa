@@ -32,7 +32,7 @@ public class JDBCSelect {
                 Student student = new Student();
                 student.setId(resultSet.getLong("id"));
                 student.setName(resultSet.getString("name"));
-                student.setSecondName(resultSet.getString("surname"));
+                student.setSurname(resultSet.getString("surname"));
                 student.setAvgGrade(resultSet.getDouble("avg_grade"));
 
                 students.add(student);
