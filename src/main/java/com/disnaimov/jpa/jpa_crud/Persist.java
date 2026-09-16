@@ -36,7 +36,7 @@ public class Persist {
 
         try {
             transaction.begin();
-            student = new Student("Isaac", "Scott", 5.4);
+            student = new Student("Isaac", "Scott", 6.4);
             entityManager.persist(student);
             transaction.commit();
         } catch (Exception e) {

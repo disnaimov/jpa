@@ -10,17 +10,17 @@ import javax.persistence.Transient;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "students")
+@Table(name = "test_students")
 public class Student {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name", nullable = false, unique = true )
+    @Column(name = "first_name", unique = true )
     private String name;
-    @Column(name = "surname")
+    //@Column(name = "surname")
     private String surname;
-    @Column(name = "avg_grade")
+    @Column(name = "avg_grade", nullable = false)
     private Double avgGrade;
     @Transient
     private LocalDateTime createdDate;
