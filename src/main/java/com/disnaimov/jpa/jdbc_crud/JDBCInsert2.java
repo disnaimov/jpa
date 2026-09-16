@@ -1,28 +1,25 @@
-package com.disnaimov.jpa;
+package com.disnaimov.jpa.jdbc_crud;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import com.disnaimov.jpa.Student;
 
-public class JDBCDelete {
+import java.sql.*;
+
+public class JDBCInsert2 {
     static final String DB_URL = System.getenv("DB_URL");
     static final String USER = System.getenv("DB_USER");
     static final String PWD = System.getenv("DB_PASSWORD");
 
     public static void main(String[] args) {
         Connection connection = null;
+        Student student = new Student("Leo", "Farrell", 8.4);
 
         try {
             connection = DriverManager.getConnection(DB_URL, USER, PWD);
+            Statement statement = connection.createStatement();
+            String sqlQuery = "insert into students(name, surname, avg_grade) values" + "('"
+                    + student.getName() + "', '" + student.getSecondName() + "', " + student.getAvgGrade() + ")" ;
 
-            PreparedStatement statement = connection.prepareStatement("" +
-                    "DELETE FROM students WHERE surname = ?");
-
-            statement.setString(1, "Hopp");
-            int deletedRows = statement.executeUpdate();
-
-            System.out.println("Было удалено " + deletedRows + " строк");
+            statement.executeUpdate(sqlQuery);
 
             statement.close();
 

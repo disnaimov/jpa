@@ -1,4 +1,4 @@
-package com.disnaimov.jpa;
+package com.disnaimov.jpa.jdbc_crud;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
