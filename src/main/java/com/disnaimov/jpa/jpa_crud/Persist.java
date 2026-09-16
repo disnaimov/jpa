@@ -1,4 +1,4 @@
-package com.disnaimov.jpa.hibernate_crud;
+package com.disnaimov.jpa.jpa_crud;
 
 import com.disnaimov.jpa.Student;
 
