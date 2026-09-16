@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "students")
@@ -20,6 +22,8 @@ public class Student {
     private String surname;
     @Column(name = "avg_grade")
     private Double avgGrade;
+    @Transient
+    private LocalDateTime createdDate;
 
     public Student() {
     }
@@ -28,6 +32,7 @@ public class Student {
         this.name = name;
         this.surname = surname;
         this.avgGrade = avgGrade;
+        createdDate = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -62,13 +67,22 @@ public class Student {
         this.avgGrade = avgGrade;
     }
 
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
+    }
+
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", secondName='" + surname + '\'' +
+                ", surname='" + surname + '\'' +
                 ", avgGrade=" + avgGrade +
+                ", createdDate=" + createdDate +
                 '}';
     }
 }
