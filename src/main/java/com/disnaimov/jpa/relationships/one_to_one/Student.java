@@ -1,29 +1,23 @@
-package com.disnaimov.jpa;
+package com.disnaimov.jpa.relationships.one_to_one;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import java.time.LocalDateTime;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "test_students")
+@Table(name = "students")
 public class Student {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "first_name", unique = true )
+    @Column(name = "name")
     private String name;
-    //@Column(name = "surname")
+    @Column(name = "surname")
     private String surname;
-    @Column(name = "avg_grade", nullable = false)
+    @Column(name = "avg_grade")
     private Double avgGrade;
-    @Transient
-    private LocalDateTime createdDate;
+    @OneToOne
+    @JoinColumn(name = "passport_id")
+    private Passport passport;
 
     public Student() {
     }
@@ -32,7 +26,6 @@ public class Student {
         this.name = name;
         this.surname = surname;
         this.avgGrade = avgGrade;
-        createdDate = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -67,12 +60,12 @@ public class Student {
         this.avgGrade = avgGrade;
     }
 
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
+    public Passport getPassport() {
+        return passport;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
+    public void setPassport(Passport passport) {
+        this.passport = passport;
     }
 
     @Override
@@ -80,9 +73,8 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
+                ", secondName='" + surname + '\'' +
                 ", avgGrade=" + avgGrade +
-                ", createdDate=" + createdDate +
                 '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.disnaimov.jpa.crud.jpa_crud;
 
-import com.disnaimov.jpa.Student;
+import com.disnaimov.jpa.crud.Student;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

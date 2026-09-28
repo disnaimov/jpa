@@ -1,6 +1,6 @@
 package com.disnaimov.jpa.crud.jdbc_crud;
 
-import com.disnaimov.jpa.Student;
+import com.disnaimov.jpa.crud.Student;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
