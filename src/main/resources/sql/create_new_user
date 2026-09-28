@@ -1,0 +1,2 @@
+INSERT INTO students(name, surname, avg_grade)
+VALUES ('Anna', 'Hopp', 5.2)
