@@ -1,4 +1,4 @@
-package com.disnaimov.jpa.jpa_crud;
+package com.disnaimov.jpa.crud.jpa_crud;
 
 import com.disnaimov.jpa.Student;
 
@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Persist {
+public class Update {
     static final String DB_URL = System.getenv("DB_URL");
     static final String USER = System.getenv("DB_USER");
     static final String PWD = System.getenv("DB_PASSWORD");
@@ -28,27 +28,32 @@ public class Persist {
             envProperties.put("jakarta.persistence.jdbc.password", PWD);
         }
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpa-course", envProperties);
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("jpa-course",  envProperties);
         EntityManager entityManager = factory.createEntityManager();
 
         EntityTransaction transaction = entityManager.getTransaction();
+
         Student student = null;
 
         try {
             transaction.begin();
-            student = new Student("Isaac", "Scott", 6.4);
-            entityManager.persist(student);
+
+            student = entityManager.find(Student.class, 4L);
+
+            student.setAvgGrade(8.2);
+
             transaction.commit();
         } catch (Exception e) {
-            if (transaction.isActive()) {
+            if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
         } finally {
-            entityManager.close();
-            factory.close();
+            if (entityManager != null) {
+                entityManager.close();
+                factory.close();
+            }
         }
         System.out.println(student);
     }
 }
-

@@ -1,4 +1,4 @@
-package com.disnaimov.jpa.jdbc_crud;
+package com.disnaimov.jpa.crud.jdbc_crud;
 
 import com.disnaimov.jpa.Student;
 
